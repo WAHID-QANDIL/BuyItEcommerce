@@ -18,7 +18,6 @@ import buyitecommerce.shared.generated.resources.log_out
 import buyitecommerce.shared.generated.resources.map_pin
 import buyitecommerce.shared.generated.resources.menu
 import buyitecommerce.shared.generated.resources.minus
-import buyitecommerce.shared.generated.resources.paypal
 import buyitecommerce.shared.generated.resources.paypal_logo
 import buyitecommerce.shared.generated.resources.plus
 import buyitecommerce.shared.generated.resources.right_arrow

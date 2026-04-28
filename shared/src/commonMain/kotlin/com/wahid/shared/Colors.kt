@@ -20,3 +20,9 @@ val Blue = Color(0xFFF38B3FF)
 val Green = Color(0xFF19D109)
 val Purple = Color(0xFF8E5EFF)
 val RedLight = Color(0xFFFF5E60)
+
+
+
+
+val TextPrimary = Black
+val TextSecondary = Orange

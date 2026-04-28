@@ -1,6 +1,7 @@
 package com.wahid.shared
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
 import buyitecommerce.shared.generated.resources.Res
 import buyitecommerce.shared.generated.resources.bebas_neue_regular
@@ -8,10 +9,10 @@ import buyitecommerce.shared.generated.resources.roboto_condensed_variable_font_
 import org.jetbrains.compose.resources.Font
 
 @Composable
-fun babesNeueFont() = Font(Res.font.bebas_neue_regular)
+fun babesNeueFont() = FontFamily(Font(Res.font.bebas_neue_regular))
 
 @Composable
-fun robotoFont() = Font(Res.font.roboto_condensed_variable_font_wght)
+fun robotoFont() = FontFamily(Font(Res.font.roboto_condensed_variable_font_wght))
 
 
 object FontSize{
