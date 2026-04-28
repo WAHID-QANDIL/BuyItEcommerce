@@ -39,7 +39,7 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
-            implementation(project(":shared"))
+            api(project(":shared"))
             implementation(project(":navigation"))
 
         }

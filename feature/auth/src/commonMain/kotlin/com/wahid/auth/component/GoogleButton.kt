@@ -82,8 +82,8 @@ fun GoogleButton(
                     contentDescription = "Google Logo",
                     tint = iconColor
                 )
-                Spacer(modifier = Modifier.width(Dimin.Padding.REGULAR_PADDING))
             }
+            Spacer(modifier = Modifier.width(Dimin.Padding.REGULAR_PADDING))
             AnimatedVisibility(loadingState) {
                 CircularProgressIndicator(
                     modifier = Modifier.size(Dimin.Padding.LARGE_PADDING),
@@ -91,7 +91,7 @@ fun GoogleButton(
                     color = progressIndicatorColor
                 )
             }
-
+            Spacer(modifier = Modifier.width(Dimin.Padding.REGULAR_PADDING))
             Text(
                 text = buttonText,
                 color = TextPrimary,

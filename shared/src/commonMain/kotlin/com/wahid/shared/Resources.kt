@@ -1,33 +1,5 @@
 package com.wahid.shared
 
-import buyitecommerce.shared.generated.resources.Res
-import buyitecommerce.shared.generated.resources.alert_triangle
-import buyitecommerce.shared.generated.resources.back_arrow
-import buyitecommerce.shared.generated.resources.book
-import buyitecommerce.shared.generated.resources.cat
-import buyitecommerce.shared.generated.resources.check
-import buyitecommerce.shared.generated.resources.checkmark_image
-import buyitecommerce.shared.generated.resources.close
-import buyitecommerce.shared.generated.resources.delete
-import buyitecommerce.shared.generated.resources.edit_3
-import buyitecommerce.shared.generated.resources.google_logo
-import buyitecommerce.shared.generated.resources.grid
-import buyitecommerce.shared.generated.resources.home
-import buyitecommerce.shared.generated.resources.log_in
-import buyitecommerce.shared.generated.resources.log_out
-import buyitecommerce.shared.generated.resources.map_pin
-import buyitecommerce.shared.generated.resources.menu
-import buyitecommerce.shared.generated.resources.minus
-import buyitecommerce.shared.generated.resources.paypal_logo
-import buyitecommerce.shared.generated.resources.plus
-import buyitecommerce.shared.generated.resources.right_arrow
-import buyitecommerce.shared.generated.resources.search
-import buyitecommerce.shared.generated.resources.shopping_cart
-import buyitecommerce.shared.generated.resources.shopping_cart_image
-import buyitecommerce.shared.generated.resources.unlock
-import buyitecommerce.shared.generated.resources.user
-import buyitecommerce.shared.generated.resources.vertical_menu
-import buyitecommerce.shared.generated.resources.weight
 
 object Resources{
 

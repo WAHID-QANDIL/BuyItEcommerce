@@ -3,9 +3,6 @@ package com.wahid.shared
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
-import buyitecommerce.shared.generated.resources.Res
-import buyitecommerce.shared.generated.resources.bebas_neue_regular
-import buyitecommerce.shared.generated.resources.roboto_condensed_variable_font_wght
 import org.jetbrains.compose.resources.Font
 
 @Composable

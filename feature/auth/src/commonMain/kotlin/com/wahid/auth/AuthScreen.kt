@@ -23,6 +23,7 @@ import com.wahid.shared.Dimin
 import com.wahid.shared.FontSize
 import com.wahid.shared.Orange
 import com.wahid.shared.TextPrimary
+import com.wahid.shared.White
 import com.wahid.shared.babesNeueFont
 import rememberMessageBarState
 
@@ -33,13 +34,14 @@ fun AuthScreen() {
     Scaffold { paddingValues ->
 
         ContentWithMessageBar(
+            contentBackgroundColor = White,
             messageBarState = messageBarState,
             modifier = Modifier.padding(
                 top = paddingValues.calculateTopPadding(),
                 bottom = paddingValues.calculateBottomPadding()
             ),
             errorMaxLines = 2,
-            ) {
+        ) {
 
             Column(
                 modifier = Modifier.fillMaxSize()
@@ -79,7 +81,7 @@ fun AuthScreen() {
                         messageBarState.addError("Something went wrong")
                         isLoading = isLoading.not()
                     },
-                    loadingState = isLoading
+                    loadingState = isLoading,
                 )
             }
 

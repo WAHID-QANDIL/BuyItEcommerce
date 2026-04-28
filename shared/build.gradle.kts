@@ -1,20 +1,20 @@
-import com.android.build.api.dsl.androidLibrary
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidKotlinMultiplatformLibrary)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
 }
-
+compose.resources {
+    packageOfResClass = "com.wahid.shared"
+    publicResClass = true
+}
 kotlin {
-    androidLibrary {
-        namespace = "com.wahid.shared"
-        compileSdk = 34
-        minSdk = 24
+    androidTarget {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
     }
-
     listOf(
         iosArm64(),
         iosSimulatorArm64(),
@@ -25,7 +25,6 @@ kotlin {
             isStatic = true
         }
     }
-
     sourceSets {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
@@ -45,5 +44,16 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
+    }
+}
+android {
+    namespace = "com.wahid.shared"
+    compileSdk = 36
+    defaultConfig {
+        minSdk = 24
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
