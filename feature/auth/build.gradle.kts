@@ -71,6 +71,11 @@ kotlin {
                 implementation(libs.androidx.lifecycle.viewmodelCompose)
                 implementation(libs.androidx.lifecycle.runtimeCompose)
                 implementation(libs.messagebar.kmp)
+
+
+                implementation(libs.kmpauth.google)
+                implementation(libs.kmpauth.firebase)
+
                 implementation(project(":shared"))
 
                 // Add KMP dependencies here
@@ -85,10 +90,11 @@ kotlin {
 
         androidMain {
             dependencies {
-
+                implementation(project.dependencies.platform(libs.firebase.bom))
                 implementation(libs.compose.uiToolingPreview)
                 implementation(libs.androidx.activity.compose)
                 implementation(libs.android.splashscreen)
+                implementation(libs.firebase.auth)
 
                 // Add Android-specific dependencies here. Note that this source set depends on
                 // commonMain by default and will correctly pull the Android artifacts of any KMP

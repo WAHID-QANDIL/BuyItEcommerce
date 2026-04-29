@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.googleServices)
 }
 
 kotlin {
@@ -39,7 +40,10 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
-            api(project(":shared"))
+            implementation(libs.kmpauth.google)
+            implementation(libs.kmpauth.firebase)
+
+            implementation(project(":shared"))
             implementation(project(":navigation"))
 
         }

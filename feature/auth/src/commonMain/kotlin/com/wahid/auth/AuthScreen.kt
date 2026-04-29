@@ -17,6 +17,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
+import com.mmk.kmpauth.firebase.google.GoogleButtonUiContainerFirebase
+import com.mmk.kmpauth.google.GoogleButtonUiContainer
 import com.wahid.auth.component.GoogleButton
 import com.wahid.shared.Alpha
 import com.wahid.shared.Dimin
@@ -74,15 +76,27 @@ fun AuthScreen() {
                     )
 
                 }
+                GoogleButtonUiContainerFirebase(
+                    onResult = { result->
+                        isLoading = false
+                        result.onSuccess { firebaseUser->
+                            messageBarState.addSuccess("logged in as ${firebaseUser?.displayName}")
 
-                GoogleButton(
-                    modifier = Modifier.padding(Dimin.Padding.REGULAR_PADDING),
-                    onClicked = {
-                        messageBarState.addError("Something went wrong")
-                        isLoading = isLoading.not()
-                    },
-                    loadingState = isLoading,
-                )
+                        }.onFailure { error ->
+                            messageBarState.addError(error.message.toString())
+                        }
+                    }
+                ){
+                    GoogleButton(
+                        modifier = Modifier.padding(Dimin.Padding.REGULAR_PADDING),
+                        onClicked = {
+                            isLoading = true
+                            this@GoogleButtonUiContainerFirebase.onClick()
+                        },
+                        loadingState = isLoading,
+                    )
+
+                }
             }
 
 

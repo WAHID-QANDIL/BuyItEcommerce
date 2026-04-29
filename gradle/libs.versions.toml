@@ -20,6 +20,10 @@ kotlinStdlib = "2.3.21"
 runner = "1.5.2"
 core = "1.5.0"
 messagebar-kmp = "1.0.9"
+kmpauth = "2.5.0-alpha01"
+firebaseBom = "34.12.0"
+googleServices = "4.4.4"
+
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -44,7 +48,12 @@ material = { group = "com.google.android.material", name = "material", version.r
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
 androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
-messagebar-kmp = {group = "com.stevdza-san", name = "messagebarkmp", version.ref = "messagebar-kmp"}
+messagebar-kmp = { group = "com.stevdza-san", name = "messagebarkmp", version.ref = "messagebar-kmp" }
+kmpauth-google = { group = "io.github.mirzemehdi", name = "kmpauth-google", version.ref = "kmpauth" }
+kmpauth-firebase = { group = "io.github.mirzemehdi", name = "kmpauth-firebase", version.ref = "kmpauth" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -55,3 +64,4 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 androidLint = { id = "com.android.lint", version.ref = "agp" }
+googleServices = { id = "com.google.gms.google-services", version.ref = "googleServices" }
