@@ -23,14 +23,13 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       # 4. Strip any hardcoded Java home from gradle.properties
-      #    (prevents committed Linux/Windows paths from breaking macOS builds)
       - name: Clean gradle.properties Java home
         run: |
           if [ -f gradle.properties ]; then
             sed -i '' '/org\.gradle\.java\.home/d' gradle.properties
           fi
 
-      # 5. Cache Kotlin/Native (huge speed boost)
+      # 5. Cache Kotlin/Native
       - name: Cache Kotlin/Native
         uses: actions/cache@v4
         with:
@@ -49,16 +48,15 @@ jobs:
 
       # 8. Install Pods (links KMP framework into iOS)
       - name: Pod install
-        run: |
-          cd iosApp
-          pod install
+        working-directory: YOUR_IOS_FOLDER   # ← e.g. iosApp, composeApp, BuyItEcommerce etc.
+        run: pod install
 
       # 9. Build iOS app (simulator → no signing headaches)
       - name: Build iOS App
         run: |
           xcodebuild \
-            -workspace iosApp/iosApp.xcworkspace \
-            -scheme iosApp \
+            -workspace YOUR_IOS_FOLDER/YOUR_IOS_FOLDER.xcworkspace \  # ← fix both
+            -scheme YOUR_SCHEME \
             -sdk iphonesimulator \
             -configuration Debug \
             -destination 'platform=iOS Simulator,name=iPhone 15' \
