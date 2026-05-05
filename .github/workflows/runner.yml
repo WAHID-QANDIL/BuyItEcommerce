@@ -38,25 +38,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-konan-
 
-      # 6. Install CocoaPods
-      - name: Install CocoaPods
-        run: sudo gem install cocoapods
-
-      # 7. Build shared KMP module
+      # 6. Build shared KMP module (produces the .framework for iOS)
       - name: Build shared module
         run: ./gradlew :shared:assemble --stacktrace
 
-      # 8. Install Pods (links KMP framework into iOS)
-      - name: Pod install
-        working-directory: YOUR_IOS_FOLDER   # ← e.g. iosApp, composeApp, BuyItEcommerce etc.
-        run: pod install
-
-      # 9. Build iOS app (simulator → no signing headaches)
+      # 7. Build iOS app directly via .xcodeproj (no CocoaPods in this project)
       - name: Build iOS App
         run: |
           xcodebuild \
-            -workspace YOUR_IOS_FOLDER/YOUR_IOS_FOLDER.xcworkspace \  # ← fix both
-            -scheme YOUR_SCHEME \
+            -project iosApp/iosApp.xcodeproj \
+            -scheme iosApp \
             -sdk iphonesimulator \
             -configuration Debug \
             -destination 'platform=iOS Simulator,name=iPhone 15' \
