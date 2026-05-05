@@ -1,0 +1,52 @@
+name: iOS Build (KMP)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Java (for Gradle)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle cache
+        uses: gradle/gradle-build-action@v3
+
+      # Optional: cache Kotlin/Native
+      - name: Cache Kotlin/Native
+        uses: actions/cache@v4
+        with:
+          path: ~/.konan
+          key: ${{ runner.os }}-konan
+
+      - name: Install CocoaPods
+        run: sudo gem install cocoapods
+
+      - name: Build shared module (KMP)
+        run: ./gradlew :shared:assemble
+
+      # If you use CocoaPods integration
+      - name: Pod install
+        run: |
+          cd iosApp
+          pod install
+
+      - name: Build iOS app
+        run: |
+          xcodebuild \
+            -workspace iosApp/iosApp.xcworkspace \
+            -scheme iosApp \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            build
