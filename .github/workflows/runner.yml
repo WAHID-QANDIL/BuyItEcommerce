@@ -10,38 +10,48 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout repo
+      # 1. Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Java (for Gradle)
+      # 2. Setup Java (Gradle uses this)
+      - name: Setup Java 17
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Gradle cache
-        uses: gradle/gradle-build-action@v3
+      # 3. Setup Gradle (NEW, non-deprecated)
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
-      # Optional: cache Kotlin/Native
+      # 4. Fix your exact issue (force correct Java home)
+      - name: Ensure correct Gradle JVM
+        run: echo "org.gradle.java.home=$JAVA_HOME" >> gradle.properties
+
+      # 5. Cache Kotlin/Native (huge speed boost)
       - name: Cache Kotlin/Native
         uses: actions/cache@v4
         with:
           path: ~/.konan
           key: ${{ runner.os }}-konan
 
+      # 6. Install CocoaPods
       - name: Install CocoaPods
         run: sudo gem install cocoapods
 
-      - name: Build shared module (KMP)
-        run: ./gradlew :shared:assemble
+      # 7. Build shared KMP module
+      - name: Build shared module
+        run: ./gradlew :shared:assemble --stacktrace
 
-      # If you use CocoaPods integration
+      # 8. Install Pods (links KMP framework into iOS)
       - name: Pod install
         run: |
           cd iosApp
           pod install
 
-      - name: Build iOS app
+      # 9. Build iOS app (simulator → no signing headaches)
+      - name: Build iOS App
         run: |
           xcodebuild \
             -workspace iosApp/iosApp.xcworkspace \
